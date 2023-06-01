@@ -1,7 +1,9 @@
+package contact;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static contact.ContactList.findAll;
 
 
 class Contact {
@@ -22,11 +24,18 @@ class Contact {
     }
 }
 public class ContactsManagerCLI {
+    public static Contact[] mList = findAll();
 
     private static final String CONTACTS_FILE = "contacts.txt";
     public static void main(String[] args) {
 
-        List<Contact> contacts = loadContacts();
+        List<Contact> contacts = loadContacts(findAll());
+
+        System.out.println(
+                "                             ( \\---/ )\n" +
+                "                              ) . . (\n" +
+                "________________________,--._(___Y___)_,--._______________________ \n" +
+                "                        `--'           `--'" +"\n WELCOME");
 
         while (true) {
             System.out.println("""
@@ -70,7 +79,7 @@ public class ContactsManagerCLI {
         }
     }
 
-    private static List<Contact> loadContacts() {
+    private static List<Contact> loadContacts(Contact[] contact) {
         List<Contact> contacts = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(CONTACTS_FILE))) {
@@ -79,8 +88,8 @@ public class ContactsManagerCLI {
                 String[] parts = line.split("\\|");
                 String name = parts[0];
                 String phoneNumber = parts[1];
-                Contact contact = new Contact(name, phoneNumber);
-                contacts.add(contact);
+                Contact contactt = new Contact(name, phoneNumber);
+                contacts.add(contactt);
             }
         } catch (IOException e) {
             // Ignore if file does not exist or error occurs during reading
@@ -163,5 +172,3 @@ public class ContactsManagerCLI {
         }
     }
 }
-
-
