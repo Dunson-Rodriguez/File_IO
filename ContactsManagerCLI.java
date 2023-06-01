@@ -3,6 +3,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+class Contact {
+    private String name;
+    private String phoneNumber;
+
+    public Contact(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+}
 public class ContactsManagerCLI {
 
     private static final String CONTACTS_FILE = "contacts.txt";
@@ -32,12 +50,15 @@ public class ContactsManagerCLI {
                     break;
                 case "2":
                     addContact(contacts);
+                    showContacts(contacts);
                     break;
                 case "3":
                     searchContact(contacts);
                     break;
                 case "4":
+                    showContacts(contacts);
                     deleteContact(contacts);
+                    showContacts(contacts);
                     break;
                 case "5":
                     saveContacts(contacts);
@@ -143,20 +164,4 @@ public class ContactsManagerCLI {
     }
 }
 
-class Contact {
-    private String name;
-    private String phoneNumber;
 
-    public Contact(String name, String phoneNumber) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-}
