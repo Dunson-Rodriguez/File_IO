@@ -26,10 +26,19 @@ class Contact {
 public class ContactsManagerCLI {
     public static Contact[] mList = findAll();
 
-//    public static ContactList[] mList = findAll();
+
+
 
     private static final String CONTACTS_FILE = "contacts.txt";
     public static void main(String[] args) {
+        Contact joe = new Contact("Joe", "1234567891");
+        Contact fred = new Contact("Fred", "1987654321");
+        Contact bob = new Contact("Bob", "1357924680");
+        ArrayList<Contact> contactList = new ArrayList<>();
+        contactList.add(joe);
+        contactList.add(fred);
+        contactList.add(bob);
+
 
         List<Contact> contacts = loadContacts(findAll());
 
@@ -37,7 +46,7 @@ public class ContactsManagerCLI {
                 "                             ( \\---/ )\n" +
                 "                              ) . . (\n" +
                 "________________________,--._(___Y___)_,--._______________________ \n" +
-                "                        `--'           `--'" +"\n WELCOME");
+                "                        `--'           `--'" +"\n WELCOME");1
         while (true) {
             System.out.println("""
             \nMain Menu:
