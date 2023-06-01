@@ -1,5 +1,4 @@
 package contact;
-
 public class ContactList {
     public static Contact[] findAll() {
         return new Contact[]{
