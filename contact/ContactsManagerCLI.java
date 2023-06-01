@@ -31,13 +31,7 @@ public class ContactsManagerCLI {
 
     private static final String CONTACTS_FILE = "contacts.txt";
     public static void main(String[] args) {
-        Contact joe = new Contact("Joe", "1234567891");
-        Contact fred = new Contact("Fred", "1987654321");
-        Contact bob = new Contact("Bob", "1357924680");
-        ArrayList<Contact> contactList = new ArrayList<>();
-        contactList.add(joe);
-        contactList.add(fred);
-        contactList.add(bob);
+
 
 
         List<Contact> contacts = loadContacts(findAll());
