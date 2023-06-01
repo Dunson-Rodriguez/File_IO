@@ -38,7 +38,6 @@ public class ContactsManagerCLI {
                 "                              ) . . (\n" +
                 "________________________,--._(___Y___)_,--._______________________ \n" +
                 "                        `--'           `--'" +"\n WELCOME");
-
         while (true) {
             System.out.println("""
             \nMain Menu:
