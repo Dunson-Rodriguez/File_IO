@@ -23,6 +23,8 @@ class Contact {
 }
 public class ContactsManagerCLI {
 
+//    public static ContactList[] mList = findAll();
+
     private static final String CONTACTS_FILE = "contacts.txt";
     public static void main(String[] args) {
 
@@ -43,30 +45,29 @@ public class ContactsManagerCLI {
 
             Scanner scanner = new Scanner(System.in);
             String choice = scanner.nextLine();
+            doChoice(choice, contacts);
+        }
+    }
 
-            switch (choice) {
-                case "1":
-                    showContacts(contacts);
-                    break;
-                case "2":
-                    addContact(contacts);
-                    showContacts(contacts);
-                    break;
-                case "3":
-                    searchContact(contacts);
-                    break;
-                case "4":
-                    showContacts(contacts);
-                    deleteContact(contacts);
-                    showContacts(contacts);
-                    break;
-                case "5":
-                    saveContacts(contacts);
-                    System.out.println("Exiting... Goodbye!");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+    private static void doChoice(String choice, List<Contact> contacts) {
+        switch (choice) {
+            case "1" -> showContacts(contacts);
+            case "2" -> {
+                addContact(contacts);
+                showContacts(contacts);
             }
+            case "3" -> searchContact(contacts);
+            case "4" -> {
+                showContacts(contacts);
+                deleteContact(contacts);
+                showContacts(contacts);
+            }
+            case "5" -> {
+                saveContacts(contacts);
+                System.out.println("Exiting... Goodbye!");
+                System.exit(0);
+            }
+            default -> System.out.println("Invalid choice. Please try again.");
         }
     }
 
