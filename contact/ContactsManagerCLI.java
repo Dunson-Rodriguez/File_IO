@@ -121,7 +121,7 @@ public class ContactsManagerCLI {
     private static void saveContacts(List<Contact> contacts) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CONTACTS_FILE))) {
             for (Contact contact : contacts) {
-                writer.write(contact.getName() + "|" + contact.getPhoneNumber());
+                writer.write(contact.getName() + "  |  " + contact.getPhoneNumber());
                 writer.newLine();
             }
         } catch (IOException e) {
