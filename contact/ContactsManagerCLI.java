@@ -156,17 +156,34 @@ public class ContactsManagerCLI {
 
     private static void addContact(List<Contact> contacts) {
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Enter the contact's name: ");
         String name = scanner.nextLine();
-
-        System.out.print("Enter the contact's phone number: ");
-        String phoneNumber = scanner.nextLine();
-
-        Contact contact = new Contact(name, phoneNumber);
-        contacts.add(contact);
-
-        System.out.println("Contact added successfully!");
+        boolean overwriteContact = false;
+        while (!overwriteContact) {
+            for (Contact contact : contacts) {
+                if (contact.getName().equalsIgnoreCase(name)) {
+                    System.out.println("There's already a contact named " + contact.getName() + ".");
+                    System.out.print("Do you want to overwrite it? (Yes/No): ");
+                    String overwriteChoice = scanner.nextLine();
+                    if (overwriteChoice.equalsIgnoreCase("No")) {
+                        System.out.println("Contact not added.");
+                        return;
+                    } else if (overwriteChoice.equalsIgnoreCase("Yes")) {
+                        contacts.remove(contact);
+                        overwriteContact = true;
+                        break;
+                    }
+                }
+            }
+            if (!overwriteContact) {
+                System.out.print("Enter the contact's phone number: ");
+                String phoneNumber = scanner.nextLine();
+                Contact contact = new Contact(name, phoneNumber);
+                contacts.add(contact);
+                System.out.println("Contact added successfully!");
+                overwriteContact = true;
+            }
+        }
     }
 
     private static void searchContact(List<Contact> contacts) {
