@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import static contact.ContactList.findAll;
+
 
 
 class Contact {
@@ -24,7 +24,7 @@ class Contact {
     }
 }
 public class ContactsManagerCLI {
-    public static Contact[] mList = findAll();
+
 
 
 
@@ -34,7 +34,7 @@ public class ContactsManagerCLI {
 
 
 
-        List<Contact> contacts = loadContacts(findAll());
+        List<Contact> contacts = loadContacts();
         System.out.println(
                 "          ___   .--.\n" +
                 "    .--.-\"   \"-' .- |\n" +
@@ -99,7 +99,7 @@ public class ContactsManagerCLI {
         }
     }
 
-    private static List<Contact> loadContacts(Contact[] contact) {
+    private static List<Contact> loadContacts() {
         List<Contact> contacts = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(CONTACTS_FILE))) {
@@ -129,13 +129,6 @@ public class ContactsManagerCLI {
         }
     }
 
-//    private static void showContacts(List<Contact> contacts) {
-//        System.out.println("Name\t\tPhone number");
-//        System.out.println("-".repeat(30));
-//        for (Contact contact : contacts) {
-//            System.out.println(contact.getName() + "\t" + contact.getPhoneNumber());
-//        }
-//    }
     private static void showContacts(List<Contact> contacts) {
         System.out.println("Name\t\tPhone number");
         System.out.println("-".repeat(30));
