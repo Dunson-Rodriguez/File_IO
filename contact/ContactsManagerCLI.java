@@ -129,11 +129,28 @@ public class ContactsManagerCLI {
         }
     }
 
+//    private static void showContacts(List<Contact> contacts) {
+//        System.out.println("Name\t\tPhone number");
+//        System.out.println("-".repeat(30));
+//        for (Contact contact : contacts) {
+//            System.out.println(contact.getName() + "\t" + contact.getPhoneNumber());
+//        }
+//    }
     private static void showContacts(List<Contact> contacts) {
         System.out.println("Name\t\tPhone number");
         System.out.println("-".repeat(30));
         for (Contact contact : contacts) {
-            System.out.println(contact.getName() + "\t" + contact.getPhoneNumber());
+            String formattedPhoneNumber = formatPhoneNumber(contact.getPhoneNumber());
+            System.out.println(contact.getName() + "\t" + formattedPhoneNumber);
+        }
+    }
+    private static String formatPhoneNumber(String phoneNumber) {
+        if (phoneNumber.length() == 10) {
+            return phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
+        } else if (phoneNumber.length() == 7) {
+            return phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3);
+        } else {
+            return phoneNumber;
         }
     }
 
